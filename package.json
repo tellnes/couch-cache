@@ -1,0 +1,24 @@
+{
+  "name": "couchcache",
+  "version": "0.0.0",
+  "description": "CouchDB LRU Cache",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tellnes/couchcache.git"
+  },
+  "keywords": [
+    "couch",
+    "couchdb",
+    "lru",
+    "cache"
+  ],
+  "author": "Christian Tellnes <christian@tellnes.no> (http://christian.tellnes.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "async-cache": "git://github.com/tellnes/async-cache.git#events",
+    "follow": "~0.8.0",
+    "request": "~2.12.0",
+    "debug": "*"
+  }
+}
