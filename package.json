@@ -1,7 +1,7 @@
 {
   "name": "couchcache",
   "version": "0.0.1",
-  "description": "CouchDB LRU Cache",
+  "description": "A cache solution for CouchDB documents.",
   "main": "index.js",
   "repository": {
     "type": "git",
