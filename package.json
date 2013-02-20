@@ -1,11 +1,11 @@
 {
-  "name": "couchcache",
+  "name": "couch-cache",
   "version": "0.0.1",
   "description": "A cache solution for CouchDB documents.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/tellnes/couchcache.git"
+    "url": "git://github.com/tellnes/couch-cache.git"
   },
   "keywords": [
     "couch",

@@ -7,7 +7,7 @@ CouchCache uses the `_changes` feed in CouchDB to invalidate documents.
 ## Usage
 
 ```js
-var CouchCache = require('couchcache')
+var CouchCache = require('couch-cache')
 
 var cache = new CouchCache({ db: 'http://localhost:5984/database'
                            , filter: 'design_doc/filter_name'
@@ -21,7 +21,7 @@ cache.get('document_id', function (err, doc) {
 
 ## Install
 
-    $ npm install couchcache
+    $ npm install couch-cache
 
 ## Options
 

@@ -1,7 +1,7 @@
 var AsyncCache = require('async-cache')
   , follow = require('follow')
   , request = require('request').defaults({ jar: false })
-  , debug = require('debug')('couchcache')
+  , debug = require('debug')('couch-cache')
   , inherits = require('util').inherits
 
 module.exports = CouchCache
