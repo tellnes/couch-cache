@@ -17,13 +17,14 @@ function CouchCache(opts) {
 
   var self = this
     , db = opts.db || opts.url || opts.uri
+    , prefix = opts.prefix || ''
 
   opts.since = 'now'
 
   opts.load = function (id, cb) {
     debug('document not in cache', id)
 
-    request.get({ uri: db + '/' + id
+    request.get({ uri: db + '/' + prefix + id
                 , json: true
                 }
     , function (err, res, body) {
@@ -44,7 +45,7 @@ function CouchCache(opts) {
 
   this._changes.on('change', function (change) {
     debug('document changed', change.id)
-    self._cache.del(change.id)
+    self._cache.del(change.id.slice(prefix.length))
   })
 
   this._changes.on('error', function (err) {

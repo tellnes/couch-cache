@@ -30,6 +30,9 @@ All options in [follow](https://npmjs.org/package/follow) and
 [lru-cache](https://npmjs.org/package/lru-cache) is available except for the
 `since` option in `follow`.
 
+- `prefix`
+  A string to prefix the CouchDB ids with.
+
 ## API
 
 `CouchCache` inherits from `EventEmitter`. All the method on
