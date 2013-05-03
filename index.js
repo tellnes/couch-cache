@@ -46,6 +46,7 @@ function CouchCache(opts) {
   this._changes.on('change', function (change) {
     debug('document changed', change.id)
     self._cache.del(change.id.slice(prefix.length))
+    self.emit('change', change)
   })
 
   this._changes.on('error', function (err) {
