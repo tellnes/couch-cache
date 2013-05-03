@@ -16,7 +16,7 @@
   "author": "Christian Tellnes <christian@tellnes.no> (http://christian.tellnes.com/)",
   "license": "MIT",
   "dependencies": {
-    "async-cache": "git://github.com/tellnes/async-cache.git#events",
+    "async-cache": "~0.1.2",
     "follow": "~0.9.0",
     "request": "~2.21.0",
     "debug": "0.x"

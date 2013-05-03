@@ -32,7 +32,8 @@ All options in [follow](https://npmjs.org/package/follow) and
 
 ## API
 
-`CouchCache` inherits from [AsyncCache](https://npmjs.org/package/async-cache).
+`CouchCache` inherits from `EventEmitter`. All the method on
+[AsyncCache](https://npmjs.org/package/async-cache) is proxied.
 
 - `CouchCache#destroy`
    Stops the changes watcher.
