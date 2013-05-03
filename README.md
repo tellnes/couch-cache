@@ -26,7 +26,9 @@ cache.get('document_id', function (err, doc) {
 ## Options
 
 The `db` option is required.
-All options in [follow](https://npmjs.org/package/follow) and [lru-cache](https://npmjs.org/package/lru-cache) is available except for the `since` option in `follow`.
+All options in [follow](https://npmjs.org/package/follow) and
+[lru-cache](https://npmjs.org/package/lru-cache) is available except for the
+`since` option in `follow`.
 
 ## API
 
