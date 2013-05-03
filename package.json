@@ -17,8 +17,8 @@
   "license": "MIT",
   "dependencies": {
     "async-cache": "git://github.com/tellnes/async-cache.git#events",
-    "follow": "~0.8.0",
-    "request": "~2.14.0",
-    "debug": "*"
+    "follow": "~0.9.0",
+    "request": "~2.21.0",
+    "debug": "0.x"
   }
 }
