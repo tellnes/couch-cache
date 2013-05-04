@@ -29,7 +29,7 @@ function CouchCache(opts) {
                 }
     , function (err, res, body) {
         if (!err && res.statusCode != 200) {
-          if (res.statusCode >= 400) err = new CouchError(res, body)
+          if (res.statusCode >= 400) err = new CouchError(id, res, body)
           else err = new Error('Unexpected status code from CouchDB; ' + res.statusCode)
         }
 
@@ -73,13 +73,18 @@ Object.getOwnPropertyNames(AsyncCache.prototype).forEach(function (name) {
 })
 
 
-function CouchError(res, body) {
+function CouchError(id, res, body) {
   Error.captureStackTrace(this, CouchError)
   Error.call(this)
   this.name = 'CouchError'
+  this.id = id
   this.statusCode = res.statusCode
   this.code = body.error
   this.message = body.reason
 }
 inherits(CouchError, Error)
 module.exports.CouchError = CouchError
+
+CouchError.prototype.toString = function () {
+  return this.name + ': Got ' + this.statusCode + ' ' + this.message + ' - asking for ' + this.id
+}
