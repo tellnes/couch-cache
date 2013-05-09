@@ -43,14 +43,17 @@ function CouchCache(opts) {
 
   this._changes = new follow.Feed(opts)
 
+  var origEmit = this._changes.emit
+  this._changes.emit = function (type) {
+    if (type !== 'error')
+      origEmit.apply(this, arguments)
+    if (type !== 'newListener' || type !== 'removeListener')
+      self.emit.apply(self, arguments)
+  }
+
   this._changes.on('change', function (change) {
     debug('document changed', change.id)
     self._cache.del(change.id.slice(prefix.length))
-    self.emit('change', change)
-  })
-
-  this._changes.on('error', function (err) {
-    self.emit('error', err)
   })
 
   this._changes.follow()
