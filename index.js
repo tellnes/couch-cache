@@ -48,7 +48,7 @@ function CouchCache(opts) {
   this._changes.emit = function (type) {
     if (type !== 'error')
       origEmit.apply(this, arguments)
-    if (type !== 'newListener' || type !== 'removeListener')
+    if (type !== 'newListener' && type !== 'removeListener')
       self.emit.apply(self, arguments)
   }
 
