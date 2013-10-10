@@ -16,15 +16,16 @@ function CouchCache(opts) {
   EventEmitter.call(this)
 
   var self = this
-    , db = opts.db || opts.url || opts.uri
     , prefix = opts.prefix || ''
+
+  this.db = opts.db || opts.url || opts.uri
 
   opts.since = 'now'
 
   opts.load = function (id, cb) {
     debug('document not in cache', id)
 
-    request.get({ uri: db + '/' + prefix + id
+    request.get({ uri: self.db + '/' + prefix + id
                 , json: true
                 }
     , function (err, res, body) {
@@ -75,6 +76,43 @@ Object.getOwnPropertyNames(AsyncCache.prototype).forEach(function (name) {
   }
 })
 
+
+CouchCache.prototype.load = function (view, cb) {
+  var self = this
+
+  if (typeof view === 'function') {
+    cb = view
+    view = ''
+  }
+
+  if (!view) view = '_all_docs'
+
+  if (!cb) cb = function (err) {
+    if (err) return self.emit('error', err)
+  }
+
+  request.get(
+      { uri: this.db + '/' + view + '?include_docs=true'
+      , json: true
+      }
+    , function (err, res, body) {
+        if (!err) {
+          if (body.error) {
+            err = new Error('CouchError: ' + body.error + '; ' + body.reason)
+          } else if (res.statusCode != 200) {
+            err = new Error('Unexpected status code from CouchDB; ' + res.statusCode)
+          }
+        }
+        if (err) return cb(err)
+
+        for (var i = 0; i < body.rows.length; i++) {
+          self.set(body.rows[i].id, body.rows[i].doc)
+        }
+
+        cb(null)
+      }
+    )
+}
 
 function CouchError(id, res, body) {
   Error.captureStackTrace(this, CouchError)
