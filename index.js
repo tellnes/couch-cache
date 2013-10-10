@@ -72,7 +72,7 @@ CouchCache.prototype.destroy = function () {
 
 Object.getOwnPropertyNames(AsyncCache.prototype).forEach(function (name) {
   CouchCache.prototype[name] = function () {
-    this._cache[name].apply(this._cache, arguments)
+    return this._cache[name].apply(this._cache, arguments)
   }
 })
 
