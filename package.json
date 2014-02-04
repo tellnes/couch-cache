@@ -1,6 +1,6 @@
 {
   "name": "couch-cache",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A cache solution for CouchDB documents.",
   "main": "index.js",
   "repository": {
