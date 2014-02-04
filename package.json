@@ -17,8 +17,8 @@
   "license": "MIT",
   "dependencies": {
     "async-cache": "~0.1.3",
-    "follow": "tellnes/follow",
-    "request": "~2.27.0",
+    "follow": "~0.10.4",
+    "request": "~2.33.0",
     "debug": "0.x"
   }
 }
