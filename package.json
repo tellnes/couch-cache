@@ -20,5 +20,8 @@
     "follow": "~0.12.1",
     "request": "^2.33.0",
     "debug": "^2.2.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
