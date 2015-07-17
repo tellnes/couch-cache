@@ -52,6 +52,11 @@ function CouchCache(opts) {
       self.emit.apply(self, arguments)
   }
 
+  self._confirmed = false
+  self._changes.once('confirm', function () {
+    self._confirmed = true
+  })
+
   this._changes.on('change', function (change) {
     debug('document changed', change.id)
     self._cache.del(change.id.slice(prefix.length))
@@ -79,6 +84,13 @@ Object.getOwnPropertyNames(AsyncCache.prototype).forEach(function (name) {
 
 CouchCache.prototype.load = function (view, cb) {
   var self = this
+
+  if (!self._confirmed) {
+    self._changes.once('confirm', function () {
+      self.load(view, cb)
+    })
+    return
+  }
 
   if (typeof view === 'function') {
     cb = view
