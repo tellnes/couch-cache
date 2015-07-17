@@ -30,6 +30,7 @@ function CouchCache(opts) {
                 }
     , function (err, res, body) {
         if (!err && res.statusCode != 200) {
+          if (res.statusCode === 404) return cb(null, null)
           if (res.statusCode >= 400) err = new CouchError(id, res, body)
           else err = new Error('Unexpected status code from CouchDB; ' + res.statusCode)
         }
